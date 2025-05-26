@@ -1,0 +1,137 @@
+/* --- Global Styles --- */
+body {
+  font-family: sans-serif;
+  background-color: #f5f5f5; /* Grey background */
+  margin: 0;
+  padding: 20px; /* Add some padding around the content */
+  min-height: 100vh;
+  display: flex; /* Use flex for simple centering */
+  justify-content: center; /* Center main content horizontally */
+  align-items: flex-start; /* Align content to the top */
+  box-sizing: border-box;
+}
+
+/* --- App Container (Simpler Role) --- */
+.app-container {
+  width: 100%;
+  /* Max width applies mostly to initial/setup */
+  max-width: 1100px; /* Allow editor more space */
+  box-sizing: border-box;
+  /* Let flexbox on body handle centering */
+}
+
+/* --- Initial & Setup Screens --- */
+.initial-screen,
+.page-setup-screen {
+  padding: 30px;
+  background-color: #fff;
+  border-radius: 8px;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1), 0 8px 16px rgba(0, 0, 0, 0.1);
+  text-align: center;
+  max-width: 400px;
+  width: 90%;
+  margin: 50px auto 0 auto; /* Top margin, centered horizontally */
+}
+/* ... Keep Button, form styles etc. ... */
+.initial-screen button, .page-setup-screen button { padding: 12px 25px; font-size: 16px; cursor: pointer; background-color: #1877f2; color: white; border: none; border-radius: 6px; transition: background-color 0.2s ease; }
+.initial-screen button:hover, .page-setup-screen button:hover { background-color: #166fe5; }
+.page-setup-screen h2 { margin-top: 0; margin-bottom: 20px; color: #333; }
+.setup-options { display: flex; flex-direction: column; gap: 15px; align-items: stretch; text-align: left; width: 100%; }
+.setup-options label { font-weight: bold; margin-bottom: 5px; display: block; color: #555; }
+.setup-options select, .setup-options input[type="radio"], .setup-options input[type="number"] { margin-right: 5px; }
+.setup-options .radio-group { text-align: center; }
+.setup-options .radio-group label { font-weight: normal; margin-right: 15px; display: inline-block; }
+.setup-options select { padding: 8px 10px; border-radius: 4px; border: 1px solid #ccc; width: 100%; box-sizing: border-box; }
+.setup-options input[type="number"] { padding: 8px; border-radius: 4px; border: 1px solid #ccc; }
+
+
+/* --- Editor Component Wrapper (Centering) --- */
+/* This div now wraps the entire editor component (toolbar + content) */
+.editor-component-wrapper {
+    width: 100%;
+    margin-top: 20px; /* Space from top */
+    /* Centering handled by body flex */
+}
+
+/* --- Page/Pageless Content Styling --- */
+/* Wrapper for Page Mode (The actual white paper) */
+.page-wrapper {
+  background-color: #fff; /* White paper */
+  box-shadow: 0 1px 3px rgba(0,0,0,0.2), 0 1px 1px rgba(0,0,0,0.14), 0 2px 1px -1px rgba(0,0,0,0.12);
+  box-sizing: border-box;
+  margin: 0 auto 20px auto; /* Center horizontally, add bottom margin */
+  /* Width, Height set via inline style */
+  /* Overflow is handled by ReactQuill's container */
+}
+
+/* Wrapper for Pageless Mode */
+.editor-content-wrapper-pageless {
+  width: 100%;
+  max-width: 900px; /* Limit width */
+  padding: 40px; /* Padding inside */
+  box-sizing: border-box;
+  background-color: #fff;
+  border-radius: 8px;
+  box-shadow: 0 1px 3px rgba(0,0,0,0.2), 0 1px 1px rgba(0,0,0,0.14), 0 2px 1px -1px rgba(0,0,0,0.12);
+  margin: 0 auto 20px auto; /* Center horizontally, add bottom margin */
+}
+
+/* --- Quill Editor Styling --- */
+/* Style the toolbar rendered by ReactQuill */
+.ql-toolbar.ql-snow {
+    border: 1px solid #ccc;
+    border-radius: 5px 5px 0 0; /* Round top corners */
+    background-color: #f8f9fa; /* Light background */
+    padding: 8px;
+    box-sizing: border-box;
+    /* Ensure it doesn't have extra margin causing centering issues */
+    margin: 0;
+}
+
+/* Style the container holding the editor area */
+.ql-container.ql-snow {
+    border: 1px solid #ccc;
+    border-top: none; /* Toolbar has top border */
+    border-radius: 0 0 5px 5px; /* Round bottom corners */
+    background-color: #fff; /* White background for editor */
+    box-sizing: border-box;
+    min-height: 200px; /* Minimum editing height */
+    height: auto; /* Allow grow */
+}
+
+/* The actual editable area */
+.ql-editor {
+    color: #202124;
+    min-height: 100%; /* Fill container */
+    height: auto;
+    line-height: 1.6;
+    outline: none;
+    box-sizing: border-box;
+    padding: var(--editor-padding) !important; /* Use CSS variable for margins */
+    overflow-wrap: break-word;
+    word-wrap: break-word;
+    word-break: normal;
+    white-space: normal;
+}
+
+/* Placeholder styling */
+.ql-editor.ql-blank::before {
+    left: var(--editor-padding, 15px);
+    top: var(--editor-padding, 15px);
+    right: var(--editor-padding, 15px);
+    color: rgba(0,0,0,0.4);
+    font-style: italic;
+    position: absolute;
+    pointer-events: none;
+}
+
+/* Keep line height fixes */
+/* ... (styles for .ql-line-height-X) ... */
+.ql-editor p.ql-line-height-1, .ql-editor div.ql-line-height-1, .ql-editor li.ql-line-height-1, .ql-editor h1.ql-line-height-1, .ql-editor h2.ql-line-height-1, .ql-editor h3.ql-line-height-1, .ql-editor blockquote.ql-line-height-1 { line-height: 1 !important; }
+.ql-editor p.ql-line-height-1-5, .ql-editor div.ql-line-height-1-5, .ql-editor li.ql-line-height-1-5, .ql-editor h1.ql-line-height-1-5, .ql-editor h2.ql-line-height-1-5, .ql-editor h3.ql-line-height-1-5, .ql-editor blockquote.ql-line-height-1-5 { line-height: 1.5 !important; }
+.ql-editor p.ql-line-height-2, .ql-editor div.ql-line-height-2, .ql-editor li.ql-line-height-2, .ql-editor h1.ql-line-height-2, .ql-editor h2.ql-line-height-2, .ql-editor h3.ql-line-height-2, .ql-editor blockquote.ql-line-height-2 { line-height: 2 !important; }
+.ql-editor p.ql-line-height-2-5, .ql-editor div.ql-line-height-2-5, .ql-editor li.ql-line-height-2-5, .ql-editor h1.ql-line-height-2-5, .ql-editor h2.ql-line-height-2-5, .ql-editor h3.ql-line-height-2-5, .ql-editor blockquote.ql-line-height-2-5 { line-height: 2.5 !important; }
+
+
+/* Keep content specific styles (.ql-editor h1, etc.) */
+/* ... */
