@@ -1,0 +1,230 @@
+body {
+  margin: 0;
+  font-family: 'Roboto', -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Oxygen',
+    'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
+    sans-serif;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  background-color: #f0f2f5;
+  display: flex;
+  align-items: center;
+  flex-direction: column;
+  padding-top: 20px;
+  padding-bottom: 20px;
+}
+
+code {
+  font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
+    monospace;
+}
+
+/* --- Page Simulation --- */
+.page-container {
+    background-color: #ffffff;
+    width: 794px;
+    min-height: 1123px;
+    padding: 72px;
+    box-shadow: 0 1px 3px rgba(0,0,0,0.12), 0 1px 2px rgba(0,0,0,0.24);
+    box-sizing: border-box;
+    overflow: hidden; /* Changed from auto/scroll for fixed page feel */
+     /* If content overflows min-height, container grows; add overflow:auto if scroll needed */
+}
+
+/* --- Editor Specific --- */
+.editable-area {
+  line-height: 1.6;
+  outline: none;
+}
+
+/* --- Toolbar --- */
+.toolbar {
+  display: flex;
+  align-items: center;
+  padding: 6px 8px;
+  background-color: #f8f9fa;
+  border: 1px solid #dadce0;
+  border-radius: 4px;
+  margin-bottom: 16px;
+  flex-wrap: wrap;
+  width: 794px;
+  box-sizing: border-box;
+  gap: 4px;
+}
+
+.toolbar-button,
+.toolbar-select {
+  cursor: pointer;
+  border: 1px solid transparent;
+  background: none;
+  padding: 5px;
+  margin: 0;
+  border-radius: 3px;
+  font-size: 18px;
+  color: #3c4043;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  min-width: 32px;
+  height: 32px;
+  vertical-align: middle;
+}
+.toolbar-button:hover,
+.toolbar-select:hover {
+  background-color: #e8eaed;
+  border-color: #e8eaed;
+}
+.toolbar-button.active {
+  background-color: #e8f0fe;
+  border-color: #d2e3fc;
+  color: #1967d2;
+}
+
+.toolbar-select {
+    padding: 4px 6px;
+    font-size: 14px;
+    height: 32px;
+    min-width: 110px; /* Adjust width for longer format names */
+    border: 1px solid #dadce0;
+    color: #3c4043;
+}
+.toolbar-select:hover {
+     border-color: #c6c6c6;
+}
+
+.toolbar-separator {
+    width: 1px;
+    height: 20px;
+    background-color: #e0e0e0;
+    margin: 0 2px;
+    align-self: center;
+}
+
+/* Font Size Input Styles */
+.font-size-input-wrapper {
+    display: inline-block;
+    vertical-align: middle;
+}
+
+.toolbar-input {
+    height: 32px;
+    padding: 4px 6px;
+    font-size: 14px;
+    border: 1px solid #dadce0;
+    border-radius: 3px;
+    box-sizing: border-box;
+    color: #3c4043;
+    vertical-align: middle;
+}
+.toolbar-input:hover {
+    border-color: #c6c6c6;
+}
+.toolbar-input:focus {
+    border-color: #1a73e8;
+    outline: none;
+    box-shadow: 0 0 0 1px #1a73e8;
+}
+
+.font-size-input {
+    width: 60px;
+    text-align: right;
+    -moz-appearance: textfield; /* Firefox */
+}
+.font-size-input::-webkit-outer-spin-button,
+.font-size-input::-webkit-inner-spin-button {
+    -webkit-appearance: none; /* Safari/Chrome */
+    margin: 0;
+}
+
+/* Color Picker Styles */
+.color-picker-wrapper {
+    display: inline-flex;
+    align-items: center;
+    vertical-align: middle;
+    margin: 0;
+}
+.color-picker-wrapper > label {
+    margin-right: 0;
+    border-top-right-radius: 0;
+    border-bottom-right-radius: 0;
+    border-right: none;
+    cursor: pointer;
+    border: 1px solid transparent;
+    background: none;
+    padding: 5px;
+    border-radius: 3px 0 0 3px;
+    font-size: 18px;
+    color: #3c4043;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    min-width: 32px;
+    height: 32px;
+    position: relative;
+}
+.color-picker-wrapper > label:hover {
+    background-color: #e8eaed;
+    border-color: #e8eaed;
+}
+.color-picker-wrapper > button {
+    border-top-left-radius: 0;
+    border-bottom-left-radius: 0;
+    border-left: 1px solid #dadce0;
+    cursor: pointer;
+    border-top: 1px solid transparent;
+    border-right: 1px solid transparent;
+    border-bottom: 1px solid transparent;
+    background: none;
+    padding: 5px;
+    margin: 0;
+    border-radius: 0 3px 3px 0;
+    font-size: 18px;
+    color: #3c4043;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    min-width: 32px;
+    height: 32px;
+}
+.color-picker-wrapper > button:hover {
+     background-color: #e8eaed;
+     border-color: #e8eaed #e8eaed #e8eaed #c6c6c6 ;
+}
+
+
+/* --- Text Formatting --- */
+.editable-area h1 { font-size: 2em; font-weight: bold; margin-top: 0.67em; margin-bottom: 0.67em; }
+.editable-area h2 { font-size: 1.5em; font-weight: bold; margin-top: 0.83em; margin-bottom: 0.83em; }
+.editable-area h3 { font-size: 1.17em; font-weight: bold; margin-top: 1em; margin-bottom: 1em; }
+.editable-area h4 { font-size: 1em; font-weight: bold; margin-top: 1.33em; margin-bottom: 1.33em; }
+.editable-area p { margin-top: 0; margin-bottom: 1em; }
+/* Example Title Style (if using H1 tag) */
+.editable-area h1[style*="font-size: 2.5em"] {
+    font-size: 2.5em !important; /* Ensure override if needed */
+    border-bottom: 1px solid #eee;
+    padding-bottom: 0.3em;
+    margin-bottom: 0.75em;
+    margin-top: 0; /* Often titles have less top margin */
+}
+
+.editable-area strong { font-weight: bold; }
+.editable-area em { font-style: italic; }
+.editable-area u { text-decoration: underline; }
+
+/* --- Page Break Element Style (KEEPING THIS) --- */
+.page-break-element {
+    padding: 20px 0;
+    user-select: none;
+    display: block;
+    position: relative;
+}
+.page-break-element hr {
+    border: none;
+    border-top: 1px dashed #ccc;
+    margin: 10px 0;
+}
+.editable-area > *:has(+ .page-break-element) {
+   margin-bottom: 0 !important;
+}
+.page-break-element + * {
+    margin-top: 0 !important;
+}
